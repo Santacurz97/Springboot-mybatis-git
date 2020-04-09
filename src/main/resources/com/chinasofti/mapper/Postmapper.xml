@@ -20,7 +20,7 @@
         select post_name from post where post_id=#{id}
     </select>
 
-    <select id="FindSPostid" >
+    <select id="FindSPostid" parameterType="Post">
         select Spost_id from post where post_id=#{post_id}
     </select>
 
@@ -28,11 +28,11 @@
          insert into post(post_name,Spost_id,post_addDate,post_mDate) values(#{post_name},#{Spost_id},#{post_addDate},#{post_mDate})
     </insert>
 
-    <update id="ModifyPost" parameterType="post">
+    <update id="ModifyPostName" parameterType="Post">
        update post set post_name=#{post_name} where post_id=#{post_id}
     </update>
 
-    <update id="ModifyPost" parameterType="post">
+    <update id="ModifyPost" parameterType="Post">
        update post set Spost_id=#{Spost_id} where post_id=#{post_id}
     </update>
 
