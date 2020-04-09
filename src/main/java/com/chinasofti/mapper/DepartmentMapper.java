@@ -4,7 +4,9 @@ import com.chinasofti.entity.Department;
 import com.chinasofti.entity.DepartmentExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface DepartmentMapper {
     int countByExample(DepartmentExample example);
 
