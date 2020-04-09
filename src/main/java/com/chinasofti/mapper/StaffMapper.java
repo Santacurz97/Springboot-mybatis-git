@@ -4,7 +4,9 @@ import com.chinasofti.entity.Staff;
 import com.chinasofti.entity.StaffExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface StaffMapper {
     int countByExample(StaffExample example);
 
