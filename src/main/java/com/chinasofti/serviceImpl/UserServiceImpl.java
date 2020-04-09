@@ -1,6 +1,6 @@
 package com.chinasofti.serviceImpl;
 
-import com.chinasofti.dao.UserDao;
+
 import com.chinasofti.entity.TUser;
 import com.chinasofti.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,22 +13,22 @@ import java.util.List;
 @Transactional //添加事务
 public class UserServiceImpl implements UserService {
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
     @Override
     public void saveUser(TUser tUser) {
-        userDao.save(tUser);
+        userService.saveUser(tUser);
     }
 
     @Override
     public List<TUser> search() {
-        return userDao.searchUsers();
+        return userService.search();
     }
 
-    public UserDao getUserDao() {
-        return userDao;
+    public UserService getUserService() {
+        return userService;
     }
 
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }
