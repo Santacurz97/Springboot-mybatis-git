@@ -3,10 +3,14 @@ package com.chinasofti.serviceImpl;
 import com.chinasofti.entity.Post;
 import com.chinasofti.mapper.PostMapper;
 import com.chinasofti.service.PostService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class PostServiceImpl implements PostService {
 
     private PostMapper postMapper;
