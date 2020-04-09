@@ -27,6 +27,13 @@ public class StaffServiceImpl implements StaffService {
         return i;
     }
 
+    //通过id查询
+    @Override
+    public Staff selectStaffById(int id) {
+        Staff staff = staffMapper.selectByPrimaryKey(id);
+        return staff;
+    }
+
     @Override
     public int updateStaff(Staff staff) {
         int i = staffMapper.updateByPrimaryKeySelective(staff);

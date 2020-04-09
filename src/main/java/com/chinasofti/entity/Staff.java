@@ -26,6 +26,23 @@ public class Staff {
     //修改时间
     private Date staffMdate;
 
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "staffId=" + staffId +
+                ", staffName='" + staffName + '\'' +
+                ", staffSex='" + staffSex + '\'' +
+                ", staffBirth=" + staffBirth +
+                ", staffNum='" + staffNum + '\'' +
+                ", departmentId=" + departmentId +
+                ", postId=" + postId +
+                ", probation=" + probation +
+                ", quit=" + quit +
+                ", staffAdddate=" + staffAdddate +
+                ", staffMdate=" + staffMdate +
+                '}';
+    }
+
     public Integer getStaffId() {
         return staffId;
     }
