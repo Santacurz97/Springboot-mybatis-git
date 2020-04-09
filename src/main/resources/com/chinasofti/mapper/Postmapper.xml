@@ -1,0 +1,43 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chinasofti.mapper.PostMapper">
+    <resultMap id="PostMap" type="com.chinasofti.entity.Post">
+        <id property="post_id" column="post_id" jdbcType="INTEGER"></id>
+        <result property="post_name" column="post_name" jdbcType="VARCHAR"></result>
+        <result property="Spost_id" column="Spost_id" jdbcType="INTEGER"></result>
+        <result property="post_addDate" column="post_addDate" jdbcType="TIMESTAMP"></result>
+        <result property="post_mDate" column="post_mDate" jdbcType="TIMESTAMP"></result>
+    </resultMap>
+
+    <select id="queryAllPost" resultMap="PostMap">
+       select *from post
+    </select>
+
+    <select id="queryMyPost" parameterType="int" >
+        select post_name from post where post_id=#{id}
+    </select>
+
+    <select id="FindSPostid" >
+        select Spost_id from post where post_id=#{post_id}
+    </select>
+
+    <insert id="savePost" parameterType="Post">
+         insert into post(post_name,Spost_id,post_addDate,post_mDate) values(#{post_name},#{Spost_id},#{post_addDate},#{post_mDate})
+    </insert>
+
+    <update id="ModifyPost" parameterType="post">
+       update post set post_name=#{post_name} where post_id=#{post_id}
+    </update>
+
+    <update id="ModifyPost" parameterType="post">
+       update post set Spost_id=#{Spost_id} where post_id=#{post_id}
+    </update>
+
+    <delete id="deletPostById" parameterType="int">
+        delete from post where post_id = #{id}
+    </delete>
+
+</mapper>
