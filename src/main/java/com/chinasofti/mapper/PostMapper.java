@@ -2,6 +2,7 @@ package com.chinasofti.mapper;
 
 
 import com.chinasofti.entity.Post;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;

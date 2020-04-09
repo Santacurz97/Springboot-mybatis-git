@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class PostTest {
     @Test
     void contextLoads() {
-
+//        System.out.println("11111");
     }
 
 }

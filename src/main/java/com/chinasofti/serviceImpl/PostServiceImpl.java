@@ -3,9 +3,9 @@ package com.chinasofti.serviceImpl;
 import com.chinasofti.entity.Post;
 import com.chinasofti.mapper.PostMapper;
 import com.chinasofti.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ import java.util.List;
 @Transactional
 public class PostServiceImpl implements PostService {
 
+    @Autowired
     private PostMapper postMapper;
 
     @Override
