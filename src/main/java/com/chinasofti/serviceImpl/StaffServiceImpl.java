@@ -4,9 +4,13 @@ import com.chinasofti.entity.Staff;
 import com.chinasofti.mapper.StaffMapper;
 import com.chinasofti.service.StaffService;
 import com.chinasofti.util.PageBean;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -18,7 +22,15 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public PageBean<Staff> selectAllStaffs(int page, int limit) {
-        return null;
+        PageHelper.offsetPage((page-1)*limit, limit);
+        List<Staff> staffs = staffMapper.selectAllStuffs();
+        PageInfo<Staff> pageInfo = new PageInfo<>(staffs);
+        PageBean<Staff> pageBean = new PageBean<>();
+        pageBean.setCount((int) pageInfo.getTotal());
+        pageBean.setData(staffs);
+        pageBean.setMsg("");
+        pageBean.setCode(0);
+        return pageBean;
     }
 
     @Override
@@ -35,14 +47,20 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public int updateStaff(Staff staff) {
+    public Boolean updateStaff(Staff staff) {
         int i = staffMapper.updateByPrimaryKeySelective(staff);
-        return i;
+        if(i == 1){
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public int removeStaff(int id) {
+    public Boolean removeStaff(int id) {
         int i = staffMapper.deleteByPrimaryKey(id);
-        return i;
+        if(i == 1){
+            return true;
+        }
+        return false;
     }
 }

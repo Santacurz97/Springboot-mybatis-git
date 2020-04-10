@@ -26,6 +26,10 @@ public class Staff {
     //修改时间
     private Date staffMdate;
 
+    private Department department;
+
+    private Post post;
+
     @Override
     public String toString() {
         return "Staff{" +
@@ -40,6 +44,8 @@ public class Staff {
                 ", quit=" + quit +
                 ", staffAdddate=" + staffAdddate +
                 ", staffMdate=" + staffMdate +
+                ", department=" + department +
+                ", post=" + post +
                 '}';
     }
 
@@ -129,5 +135,21 @@ public class Staff {
 
     public void setStaffMdate(Date staffMdate) {
         this.staffMdate = staffMdate;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }

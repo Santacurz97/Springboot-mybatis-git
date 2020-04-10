@@ -9,11 +9,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}css/staff.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}layui/css/layui.css">
-    <script src="${pageContext.request.contextPath}js/jquery.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/staff.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <!--<script src="js/functions.js"></script>-->
-    <script src="${pageContext.request.contextPath}layui/layui.js"></script>
+    <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script>
         //JavaScript代码区域
         layui.use('element', function() {
@@ -80,8 +80,8 @@
                                 ,{field:'staffName', title:'名字', edit: 'text'}
                                 ,{field:'staffSex', title:'性别', edit: 'text', sort: true}
                                 ,{field:'staffNum', title:'身份证号', edit: 'text', sort: true}
-                                ,{field:'departmentName', title:'所属部门', edit: 'text', sort: true}
-                                ,{field:'postName', title:'所属岗位', edit: 'text', sort: true}
+                                ,{field:'departmentName', title:'所属部门', templet:'<div>{{d.department.departmentName}}</div>', edit: 'text', sort: true}
+                                ,{field:'post_name', title:'所属岗位', templet:'<div>{{d.post.post_name}}</div>',edit: 'text', sort: true}
                                 ,{field:'probation', title:'是否适用', templet: '#switchTpl', unresize: true}
                                 ,{field:'quit', title:'是否离职', templet: '#switchTpl', unresize: true}
                                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}

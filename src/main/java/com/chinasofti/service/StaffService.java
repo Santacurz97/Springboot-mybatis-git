@@ -14,9 +14,9 @@ public interface StaffService {
     int addStaff(Staff staff);
 
     //修改
-    int updateStaff(Staff staff);
+    Boolean updateStaff(Staff staff);
 
     //删除
-    int removeStaff(int id);
+    Boolean removeStaff(int id);
 
 }

@@ -29,4 +29,6 @@ public interface StaffMapper {
     int updateByPrimaryKeySelective(Staff record);
 
     int updateByPrimaryKey(Staff record);
+    //查询所有员工信息
+    List<Staff> selectAllStuffs();
 }

@@ -12,3 +12,8 @@ spring:
 mybatis:
   mapper-locations: classpath:com/chinasofti/mapper/*.xml   #扫描静态资源文件夹下这个包下的所有后缀为xml的文件
   type-aliases-package: com.chinasofti.entity  #设置别名
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
