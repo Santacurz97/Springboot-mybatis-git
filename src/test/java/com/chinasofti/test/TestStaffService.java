@@ -22,4 +22,10 @@ public class TestStaffService {
         PageBean<Staff> pageBean = staffService.selectAllStaffs(1, 5);
         System.out.println(pageBean);
     }
+
+    @Test
+    public void testSearchStaff(){
+        PageBean<Staff> pageBean = staffService.searchStaff(1, "刘哲");
+        System.out.println(pageBean);
+    }
 }
