@@ -34,4 +34,6 @@ public interface StaffMapper {
 
     //模糊查询
     List<Staff> searchStaff(int staffId, String staffName);
+
+    List<Staff> selectOneStaff(int staffId);
 }

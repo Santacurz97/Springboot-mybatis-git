@@ -331,4 +331,36 @@
         LEFT JOIN post p
         ON s.post_id = p.post_id
   </select>
+  <resultMap id="searchStaffMap" type="staff" autoMapping="true">
+    <id column="staff_id" property="staffId"/>
+    <result column="staff_name" property="staffName" jdbcType="VARCHAR" />
+    <result column="staff_sex" property="staffSex" jdbcType="VARCHAR" />
+    <result column="staff_birth" property="staffBirth" jdbcType="TIMESTAMP" />
+    <result column="staff_num" property="staffNum" jdbcType="VARCHAR" />
+    <result column="department_id" property="departmentId" jdbcType="INTEGER" />
+    <result column="post_id" property="postId" jdbcType="INTEGER" />
+    <result column="probation" property="probation" jdbcType="INTEGER" />
+    <result column="quit" property="quit" jdbcType="INTEGER" />
+    <result column="staff_addDate" property="staffAdddate" jdbcType="TIMESTAMP" />
+    <result column="staff_mDate" property="staffMdate" jdbcType="TIMESTAMP" />
+    <association property="department" javaType="Department" autoMapping="true">
+      <id column="department_id" property="departmentId"></id>
+      <result column="department_name" property="departmentName"></result>
+    </association>
+    <association property="post" javaType="Post" autoMapping="true">
+      <id column="post_id" property="post_id"></id>
+      <result column="post_name" property="post_name"></result>
+    </association>
+  </resultMap>
+  <select id="searchStaff" resultMap="searchStaffMap">
+    SELECT s.staff_id,s.staff_name,s.staff_sex,s.staff_birth,s.staff_num,d.department_name,p.post_name,s.probation,s.quit
+    from staff s LEFT JOIN department d
+    ON s.department_id = d.department_id
+        LEFT JOIN post p
+        ON s.post_id = p.post_id
+    where s.staff_id = #{staffId,jdbcType=INTEGER}
+  </select>
+  <select id="selectOneStaff" parameterType="int"  resultMap="BaseResultMap">
+       select *from staff where staff_id=#{staffId}
+  </select>
 </mapper>
