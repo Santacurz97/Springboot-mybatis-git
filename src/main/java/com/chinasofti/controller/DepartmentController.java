@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/dep")
@@ -31,6 +32,24 @@ public class DepartmentController {
     public PageBean<Department> departmentList(int page, int limit){
         PageBean<Department> pageBean = departmentService.selectAllDepartment(page,limit);
         return pageBean;
+    }
+
+    //查询部门信息
+    @RequestMapping("searchDepartment")
+    @ResponseBody
+    public PageBean<Department> searchDepartment(int departIdValue, String departValue){
+        System.out.println(departIdValue);
+        System.out.println(departValue);
+        PageBean<Department> pageBean = departmentService.selectDepartment(departIdValue,departValue);
+        return pageBean;
+    }
+
+    //新增部门管理跳转
+    @RequestMapping("toaddDepartment")
+    public String toaddDepartment(Model model){
+        List<Department> list = departmentService.selectAll();
+        model.addAttribute("SdepartList", list);
+        return "addDepartment";
     }
 
     //新增部门

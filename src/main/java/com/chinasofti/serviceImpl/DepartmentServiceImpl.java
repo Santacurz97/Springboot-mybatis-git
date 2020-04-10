@@ -1,6 +1,7 @@
 package com.chinasofti.serviceImpl;
 
 
+import com.chinasofti.entity.DepartmentExample;
 import com.chinasofti.mapper.DepartmentMapper;
 import com.chinasofti.service.DepartmentService;
 import com.chinasofti.entity.Department;
@@ -34,6 +35,26 @@ public class DepartmentServiceImpl implements DepartmentService {
         PageHelper.offsetPage((page-1)*limit, limit);
         List<Department> departments = departmentMapper.selectAllDep();
         System.out.println(departments.get(0).getSdepartmentName());
+        PageInfo<Department> pageInfo = new PageInfo<>(departments);
+        PageBean<Department> pageBean = new PageBean<>();
+        pageBean.setCount((int) pageInfo.getTotal());
+        pageBean.setData(departments);
+        pageBean.setMsg("");
+        pageBean.setCode(0);
+        return pageBean;
+    }
+
+    //查询所有部门
+    @Override
+    public List<Department> selectAll(){
+        //获取数据
+        return departmentMapper.selectByExample(null);
+    }
+
+    //查询某个部门
+    @Override
+    public PageBean<Department> selectDepartment(int departIdValue,String departValue){
+        List<Department> departments = departmentMapper.selectDep(String.valueOf(departIdValue),departValue);
         PageInfo<Department> pageInfo = new PageInfo<>(departments);
         PageBean<Department> pageBean = new PageBean<>();
         pageBean.setCount((int) pageInfo.getTotal());

@@ -213,6 +213,13 @@
   <select id="selectAllDep" resultMap = "BaseResultMap">
       select d.department_id,d.department_name,b.department_name sdepartment_name
       from department d
-      JOIN department b on b.department_id = d.Sdepartment_id
+      LEFT JOIN department b on d.Sdepartment_id = b.department_id
+	  ORDER BY d.department_id
+  </select>
+
+  <select id="selectDep" parameterType="java.lang.String" resultMap = "BaseResultMap">
+      select d1.department_id,d1.department_name,d2.department_name sdepartment_name
+      from department d1,department d2
+      where d1.department_id = #{param1} and d1.department_name = #{param2} and d1.Sdepartment_id = d2.department_id
   </select>
 </mapper>

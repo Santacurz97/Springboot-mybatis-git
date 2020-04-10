@@ -9,6 +9,9 @@ public interface DepartmentService {
     //查询所有部门
     public PageBean<Department> selectAllDepartment(int page, int limit);
 
+    //查询所有部门
+    public List<Department> selectAll();
+
     //根据id查询
     public Department selectDepartmentById(int id);
 
@@ -24,6 +27,7 @@ public interface DepartmentService {
     //修改部门信息
     public int DepartmentUpdata(Department department);
 
-
+    //查询部门
+    PageBean<Department> selectDepartment(int departIdValue,String departValue);
 
 }

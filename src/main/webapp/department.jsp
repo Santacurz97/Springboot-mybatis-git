@@ -48,7 +48,7 @@
 
                 <script type="text/html" id="toolbarDemo">
                     <div class="layui-btn-container">
-                        <a href="${pageContext.request.contextPath}/addDepartment"><button class="layui-btn layui-btn-sm" lay-event="addNew">新增</button></a>
+                        <a href="${pageContext.request.contextPath}/dep/toaddDepartment"><button class="layui-btn layui-btn-sm" lay-event="addNew">新增</button></a>
                     </div>
                 </script>
 
@@ -144,8 +144,8 @@
                                     curr: 1 //重新从第 1 页开始
                                 }
                                 ,where: {
-                                    departIdValue: departValue.val(),
-                                    departValue:SdepartValue.val(),
+                                    departIdValue: departIdValue.val(),
+                                    departValue:departValue.val(),
                                 }
                                 , url: '${pageContext.request.contextPath}/dep/searchDepartment'  //后台做模糊搜索接口路径
                                 , method: 'post'

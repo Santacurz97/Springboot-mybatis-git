@@ -32,4 +32,6 @@ public interface DepartmentMapper {
 
     //查询所有部门
     List<Department> selectAllDep();
+    //查询部门
+    List<Department> selectDep(String id,String name);
 }

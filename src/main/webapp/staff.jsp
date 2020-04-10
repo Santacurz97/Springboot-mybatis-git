@@ -48,7 +48,7 @@
 
                 <script type="text/html" id="toolbarDemo">
                     <div class="layui-btn-container">
-                        <a href="${pageContext.request.contextPath}/addStaff"><button class="layui-btn layui-btn-sm" lay-event="addNew">新增</button></a>
+                        <a href="${pageContext.request.contextPath}/user/addstaff"><button class="layui-btn layui-btn-sm" lay-event="addNew">新增</button></a>
                     </div>
                 </script>
 
@@ -141,16 +141,16 @@
                         });
 
                         $('#sub').on('click', function(){
-                            var departIdValue = $('#value1');
-                            var departValue = $('#value2');
+                            var staffIdValue = $('#value1');
+                            var staffValue = $('#value2');
                             //执行重载
                             table.reload('test', {
                                 page: {
                                     curr: 1 //重新从第 1 页开始
                                 }
                                 ,where: {
-                                    staffIdValue: departValue.val(),
-                                    staffValue:SdepartValue.val(),
+                                    staffId: staffIdValue.val(),
+                                    staffName:staffValue.val(),
                                 }
                                 , url: '${pageContext.request.contextPath}/user/searchStaff'  //后台做模糊搜索接口路径
                                 , method: 'post'
