@@ -31,4 +31,7 @@ public interface StaffMapper {
     int updateByPrimaryKey(Staff record);
     //查询所有员工信息
     List<Staff> selectAllStuffs();
+
+    //模糊查询
+    List<Staff> searchStaff(int staffId, String staffName);
 }

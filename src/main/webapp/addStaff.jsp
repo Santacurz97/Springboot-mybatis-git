@@ -27,31 +27,38 @@
 <body>
 <div class="wrapper">
     <!-- 数据提交 - form表单 -->
-    <form action="${pageContext.request.contextPath}/user/addStaff" method="post" class="layui-form">
+    <form action="${pageContext.request.contextPath}/manager/reg" method="post" class="layui-form" style="margin: auto;width: 300px;">
         <div style="color: red;">
             ${requestScope.info}
         </div>
-        <div class = "rgD">
-            <div>
-                <input id="code" type="text" placeholder="请输入姓名" autocomplete="off"
-                       name="staffName"> <span id="codeInfo"></span>
-            </div>
+        <div class="layui-form-item">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入姓名" class="layui-input">
         </div>
         <div class="layui-form-item">
-            <input type="radio" name="staffSex" value="0" title="男" checked="">
-            <input type="radio" name="staffSex" value="1" title="女">
+            <input type="radio" name="sex" value="false" title="男" checked="">
+            <input type="radio" name="sex" value="true" title="女">
         </div>
-        <div class = "rgD">
-            <div>
-                <input class="password" type="password" placeholder="请输入身份证号" autocomplete="off"
-                       name="staffNum"> <span id="repaswInfo"></span>
-            </div>
+        <div class="layui-form-item">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入身份证号" class="layui-input">
         </div>
-        <div class = "rgD">
-            <div>
-                <input id="birthday" type="date" placeholder="出生日期" autocomplete="off"
-                       name="staffBirth"> <span id="birthdayInfo"></span>
-            </div>
+        <div class="layui-form-item">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入生日" class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <select name="Sdepart">
+                <option value="">请输入上级部门名称</option>
+                <c:forEach var="department" items="${departmentList}">
+                    <option   value="${department.departmentId}">${department.departmentName}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="layui-form-item">
+            <select name="Sdepart">
+                <option value="">请输入上级岗位名称</option>
+                <c:forEach var="post" items="${postList}">
+                    <option   value="${post.post_id}">${post.post_name}</option>
+                </c:forEach>
+            </select>
         </div>
         <button id="reg" type="submit">添加</button>
     </form>

@@ -9,6 +9,8 @@ public class Department {
 
     private Integer sdepartmentId;
 
+    private String sdepartmentName;
+
     private Date departmentAdddate;
 
     private Date departmentMdate;
@@ -27,6 +29,14 @@ public class Department {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName == null ? null : departmentName.trim();
+    }
+
+    public String getSdepartmentName() {
+        return sdepartmentName;
+    }
+
+    public void setSdepartmentName(String sdepartmentName) {
+        this.sdepartmentName = sdepartmentName;
     }
 
     public Integer getSdepartmentId() {

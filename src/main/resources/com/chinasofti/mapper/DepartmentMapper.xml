@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.chinasofti.entity.Department" >
     <id column="department_id" property="departmentId" jdbcType="INTEGER" />
     <result column="department_name" property="departmentName" jdbcType="VARCHAR" />
+    <result column="sdepartment_name" property="sdepartmentName" jdbcType="VARCHAR" />
     <result column="Sdepartment_id" property="sdepartmentId" jdbcType="INTEGER" />
     <result column="department_addDate" property="departmentAdddate" jdbcType="TIMESTAMP" />
     <result column="department_mDate" property="departmentMdate" jdbcType="TIMESTAMP" />
@@ -209,9 +210,9 @@
     where department_id = #{departmentId,jdbcType=INTEGER}
   </update>
 
-  <select id="selectAllDep" resultMap = "department">
-      select d.department_id,d.department_name,d.department_name
+  <select id="selectAllDep" resultMap = "BaseResultMap">
+      select d.department_id,d.department_name,b.department_name sdepartment_name
       from department d
-      JOIN department b on b.department_id = d.Sdepartment_id;
+      JOIN department b on b.department_id = d.Sdepartment_id
   </select>
 </mapper>

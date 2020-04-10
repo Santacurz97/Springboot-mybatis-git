@@ -5,15 +5,16 @@
   Time: 13:29
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{pageContext.request.contextPath}/css/addPost.css">
-    <link rel="stylesheet" href="{pageContext.request.contextPath}/layui/css/layui.css">
-    <script src="{pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/addPost.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <!--<script src="js/functions.js"></script>-->
-    <script src="{pageContext.request.contextPath}/layui/layui.js"></script>
+    <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script>
         //JavaScript代码区域
         layui.use('element', function() {
@@ -22,23 +23,23 @@
         });
     </script>
 
-    <title>添加部门</title>
+    <title>添加岗位</title>
 </head>
 <body>
 <div class="wrapper">
     <!-- 数据提交 - form表单 -->
-    <form action="${pageContext.request.contextPath}/user/addPost" class="layui-form" method="post" style="margin: auto;width: 300px;">
+    <form action="${pageContext.request.contextPath}/post/addPost" class="layui-form" method="post" style="margin: auto;width: 300px;">
         <div style="color: red;">
-            ${requestScope.info}
+
         </div>
         <div class="layui-form-item">
             <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入岗位名称" class="layui-input">
         </div>
         <div>
-            <select name="Sdepart">
+            <select name="Spost">
                 <option value="">请输入上级岗位名称</option>
                 <c:forEach var="post" items="${postList}">
-                    <option   value="${post.postId}">${post.postName}</option>
+                    <option   value="${post.post_id}">${post.post_name}</option>
                 </c:forEach>
             </select>
         </div><br /><br />

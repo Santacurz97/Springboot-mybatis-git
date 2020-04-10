@@ -33,6 +33,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         //获取数据
         PageHelper.offsetPage((page-1)*limit, limit);
         List<Department> departments = departmentMapper.selectAllDep();
+        System.out.println(departments.get(0).getSdepartmentName());
         PageInfo<Department> pageInfo = new PageInfo<>(departments);
         PageBean<Department> pageBean = new PageBean<>();
         pageBean.setCount((int) pageInfo.getTotal());

@@ -6,7 +6,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://49.232.133.137:3306/per_management
+    url: jdbc:mysql://49.232.133.137:3306/per_management?characterEncoding=utf-8
     username: yqydsb
     password: AsdLkj5201314
 mybatis:
@@ -17,3 +17,8 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countSql
+server:
+  servlet:
+    jsp:
+      init-parameters:
+        development: true

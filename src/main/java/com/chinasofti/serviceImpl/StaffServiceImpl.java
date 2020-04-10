@@ -1,6 +1,7 @@
 package com.chinasofti.serviceImpl;
 
 import com.chinasofti.entity.Staff;
+import com.chinasofti.entity.StaffExample;
 import com.chinasofti.mapper.StaffMapper;
 import com.chinasofti.service.StaffService;
 import com.chinasofti.util.PageBean;
@@ -39,13 +40,6 @@ public class StaffServiceImpl implements StaffService {
         return i;
     }
 
-    //通过id查询
-    @Override
-    public Staff selectStaffById(int id) {
-        Staff staff = staffMapper.selectByPrimaryKey(id);
-        return staff;
-    }
-
     @Override
     public Boolean updateStaff(Staff staff) {
         int i = staffMapper.updateByPrimaryKeySelective(staff);
@@ -62,5 +56,19 @@ public class StaffServiceImpl implements StaffService {
             return true;
         }
         return false;
+    }
+
+    //模糊查询
+    @Override
+    public PageBean<Staff> searchStaff(int staffId, String staffName) {
+        List<Staff> staff = staffMapper.searchStaff(staffId,staffName);
+        System.out.println(staff);
+        PageInfo<Staff> pageInfo = new PageInfo<>();
+        PageBean<Staff> pageBean = new PageBean<>();
+        pageBean.setCount((int) pageInfo.getTotal());
+        pageBean.setData(staff);
+        pageBean.setMsg("");
+        pageBean.setCode(0);
+        return pageBean;
     }
 }
