@@ -17,7 +17,7 @@
     <div class="container">
         <h1>Welcome</h1>
         <a href="${pageContext.request.contextPath}/user/todepartment"><button>部门管理</button><br /></a>
-        <a href="${pageContext.request.contextPath}/user/topost"><button>岗位管理</button><br /></a>
+        <a href="${pageContext.request.contextPath}/post/toPost"><button>岗位管理</button><br /></a>
         <a href="${pageContext.request.contextPath}/user/tostaff"><button>员工信息中心</button></a>
     </div>
 </div>

@@ -19,6 +19,11 @@ public class Post {
         this.post_mDate = post_mDate;
     }
 
+    public Post(String post_name, Integer spost_id) {
+        this.post_name = post_name;
+        Spost_id = spost_id;
+    }
+
     public Integer getPost_id() {
         return post_id;
     }

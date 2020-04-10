@@ -10,11 +10,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/addPost.css">
-    <link rel="stylesheet" href="layui/css/layui.css">
-    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/addPost.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <!--<script src="js/functions.js"></script>-->
-    <script src="layui/layui.js"></script>
+    <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script>
         //JavaScript代码区域
         layui.use('element', function() {
@@ -28,24 +28,24 @@
 <body>
 <div class="wrapper">
     <!-- 数据提交 - form表单 -->
-    <form action="${pageContext.request.contextPath}/user/updatePost" class="layui-form" method="post" style="margin: auto;width: 300px;">
+    <form action="${pageContext.request.contextPath}/post/updatePost/${post.post_id}" class="layui-form" method="post" style="margin: auto;width: 300px;">
         <div style="color: red;">
-            ${requestScope.info}
+            ${post.post_name}
         </div>
         <div class="layui-form-item">
-            <input type="text" name="title" lay-verify="title" value=postMessage.postName""
-                   autocomplete="off" placeholder="请输入部门名称" class="layui-input" />
+            <input type="text" name="title" lay-verify="title" value="${post.post_name}"
+                   autocomplete="off" placeholder="请输入岗位名称" class="layui-input" />
         </div>
         <div>
             <select name="Spost">
                 <option value="">请输入上级岗位名称</option>
                 <c:forEach var="post" items="${postList}">
                 <c:choose>
-                    <c:when test="post.postId == postMessage.postId">
-                        <option   value="${post.postId}" checked>${post.postName}</option>
+                    <c:when test="post.post_id == post.post_id">
+                        <option   value="${post.post_id}" checked>${post.post_name}</option>
                     </c:when>
                     <c:otherwise>
-                        <option   value="${post.postId}">${post.postName}</option>
+                        <option   value="${post.post_id}">${post.post_name}</option>
                     </c:otherwise>
                 </c:choose>
                 </c:forEach>

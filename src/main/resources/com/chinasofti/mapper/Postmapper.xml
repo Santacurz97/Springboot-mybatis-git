@@ -16,11 +16,19 @@
        select *from post
     </select>
 
-    <select id="queryMyPost" parameterType="int" >
-        select post_name from post where post_id=#{id}
+    <select id="queryMyPost" parameterType="int" resultMap="PostMap">
+        select *from post where post_id=#{id}
     </select>
 
-    <select id="FindSPostid" parameterType="Post">
+    <select id="queryMyPostByName" resultMap="PostMap">
+        select  *from post where post_id=#{id} and post_name=#{name}
+    </select>
+
+    <select id="searchPost" resultMap="PostMap">
+        select  *from post where post_id=#{id} and post_name=#{name}
+    </select>
+
+    <select id="FindSPostid" parameterType="Post" resultType="java.lang.Integer">
         select Spost_id from post where post_id=#{post_id}
     </select>
 
@@ -29,12 +37,10 @@
     </insert>
 
     <update id="ModifyPostName" parameterType="Post">
-       update post set post_name=#{post_name} where post_id=#{post_id}
+       update post set post_name=#{post_name}, Spost_id=#{Spost_id} where post_id=#{post_id}
     </update>
 
-    <update id="ModifyPost" parameterType="Post">
-       update post set Spost_id=#{Spost_id} where post_id=#{post_id}
-    </update>
+
 
     <delete id="deletPostById" parameterType="int">
         delete from post where post_id = #{id}
