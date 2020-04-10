@@ -208,4 +208,10 @@
       department_mDate = #{departmentMdate,jdbcType=TIMESTAMP}
     where department_id = #{departmentId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAllDep" resultMap = "department">
+      select d.department_id,d.department_name,d.department_name
+      from department d
+      JOIN department b on b.department_id = d.Sdepartment_id;
+  </select>
 </mapper>

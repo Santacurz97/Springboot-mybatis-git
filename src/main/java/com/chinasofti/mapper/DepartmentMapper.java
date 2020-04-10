@@ -29,4 +29,7 @@ public interface DepartmentMapper {
     int updateByPrimaryKeySelective(Department record);
 
     int updateByPrimaryKey(Department record);
+
+    //查询所有部门
+    List<Department> selectAllDep();
 }
