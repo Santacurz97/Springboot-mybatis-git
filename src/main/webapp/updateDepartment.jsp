@@ -29,12 +29,12 @@
 <body>
 <div class="wrapper">
     <!-- 数据提交 - form表单 -->
-    <form action="${pageContext.request.contextPath}/user/uodateDepartment" class="layui-form" method="post" style="margin: auto;width: 300px;">
+    <form action="${pageContext.request.contextPath}/user/updateDepartment" class="layui-form" method="post" style="margin: auto;width: 300px;">
         <div style="color: red;">
             ${requestScope.info}
         </div>
         <div class="layui-form-item">
-            <input type="text" name="departmentName" lay-verify="title" value=""
+            <input type="text" name="departmentName" lay-verify="title" value="${departmentMessage.departmentName}"
                    autocomplete="off" placeholder="请输入部门名称" class="layui-input" />
         </div>
         <div>
@@ -61,6 +61,4 @@
         var layer = layui.layer, form = layui.form;
     });
 </script>
-</html>
-<!DOCTYPE html>
 </html>
