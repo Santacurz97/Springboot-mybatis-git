@@ -7,9 +7,6 @@ public interface StaffService {
     //查询所有员工
     PageBean<Staff> selectAllStaffs(int page, int limit);
 
-    //通过id查询
-    Staff selectStaffById(int id);
-
     //添加员工
     int addStaff(Staff staff);
 
@@ -19,4 +16,6 @@ public interface StaffService {
     //删除
     Boolean removeStaff(int id);
 
+    //模糊查询
+    PageBean<Staff> searchStaff(int staffId, String staffName);
 }
