@@ -360,4 +360,7 @@
         ON s.post_id = p.post_id
     where s.staff_id = #{staffId,jdbcType=INTEGER}
   </select>
+  <select id="selectOneStaff" parameterType="int"  resultMap="BaseResultMap">
+       select *from staff where staff_id=#{staffId}
+  </select>
 </mapper>

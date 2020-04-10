@@ -11,11 +11,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}css/addStaff.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}layui/css/layui.css">
-    <script src="${pageContext.request.contextPath}js/jquery.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/addStaff1.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <!--<script src="js/functions.js"></script>-->
-    <script src="${pageContext.request.contextPath}layui/layui.js"></script>
+    <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script>
         $(document).ready(function(){
             //文档就绪事件
@@ -35,40 +35,57 @@
 <body>
 <div class="wrapper">
     <!-- 数据提交 - form表单 -->
-    <form action="${pageContext.request.contextPath}/user/updateStaff" method="post" class="layui-form">
+    <form action="${pageContext.request.contextPath}/user/updateStaff/${requestScope.staffMessage.staffId}" method="post" class="layui-form" style="margin: auto;width: 300px;">
         <div style="color: red;">
             ${requestScope.info}
         </div>
-        <div class = "rgD">
-            <div>
-                <input id="code" type="text" placeholder="请输入姓名" autocomplete="off" value="${staffMessage.staffName}"
-                       name="staffName"> <span id="codeInfo"></span>
-            </div>
+        <div class="layui-form-item">
+            <input type="text" name="staffName" lay-verify="title" autocomplete="off" placeholder="请输入姓名" class="layui-input" value="${requestScope.staffMessage.staffName}" >
         </div>
         <div class="layui-form-item">
-            <c:when test="${staffMessage.staffSex}">
-                <input type="radio" name="staffSex" value="false" title="男">
-                <input type="radio" name="staffSex" value="true" title="女" checked="">
+            <c:choose>
+            <c:when test="${requestScope.staffMessage.probation == '1'}">
+                <input type="radio" name="probation" value="1" title="试用期" checked="">
+                <input type="radio" name="probation" value="0" title="正式员工">
             </c:when>
             <c:otherwise>
-                <input type="radio" name="staffSex" value="false" title="男" checked="">
-                <input type="radio" name="staffSex" value="true" title="女">
+                <input type="radio" name="probation" value="1" title="试用期">
+                <input type="radio" name="probation" value="0" title="正式员工" checked="">
             </c:otherwise>
-
+            </c:choose>
         </div>
-        <div class = "rgD">
-            <div>
-                <input class="password" type="password" placeholder="请输入身份证号" autocomplete="off" value="${staffMessage.staffNum}"
-                       name="staffNum"> <span id="repaswInfo"></span>
-            </div>
+        <div class="layui-form-item">
+            <c:choose>
+                <c:when test="${requestScope.staffMessage.quit == '1'}">
+                    <input type="radio" name="quit" value="1" title="离职" checked="">
+                    <input type="radio" name="quit" value="0" title="在职">
+                </c:when>
+                <c:otherwise>
+                    <input type="radio" name="quit" value="1" title="离职">
+                    <input type="radio" name="quit" value="0" title="在职" checked="">
+                </c:otherwise>
+            </c:choose>
         </div>
-        <div class = "rgD">
-            <div>
-                <input id="birthday" type="date" placeholder="出生日期" autocomplete="off" value="${staffMessage.staffBirth}"
-                       name="staffBirth"> <span id="birthdayInfo"></span>
-            </div>
+        <div class="layui-form-item">
+            <input type="text" name="staffNum" lay-verify="title" autocomplete="off" placeholder="请输入身份证号" value="${requestScope.staffMessage.staffNum}"class="layui-input">
         </div>
-        <button id="reg" type="submit">添加</button>
+        <div class="layui-form-item">
+            <select name="departmentId">
+                <option value="">请选择部门名称</option>
+                <c:forEach items="${requestScope.staffVo.departmentList}" var="department">
+                    <option value="${department.departmentId}">${department.departmentName}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="layui-form-item">
+            <select name="postId">
+                <option value="">请选择岗位名称</option>
+                <c:forEach items="${requestScope.staffVo.postList}" var="post">
+                    <option value="${post.post_id}">${post.post_name}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <button id="reg" type="submit">修改</button>
     </form>
 </div>
 <script>

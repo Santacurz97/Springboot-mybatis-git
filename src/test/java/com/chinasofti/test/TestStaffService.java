@@ -4,6 +4,7 @@ import com.chinasofti.MybatisApplication;
 import com.chinasofti.entity.Staff;
 import com.chinasofti.service.StaffService;
 import com.chinasofti.util.PageBean;
+import com.chinasofti.vo.StaffVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,11 @@ public class TestStaffService {
     public void testSearchStaff(){
         PageBean<Staff> pageBean = staffService.searchStaff(1, "刘哲");
         System.out.println(pageBean);
+    }
+
+    @Test
+    public void testSearch(){
+        StaffVo staffVo = staffService.search();
+        System.out.println(staffVo);
     }
 }

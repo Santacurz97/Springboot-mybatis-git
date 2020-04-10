@@ -1,10 +1,15 @@
 package com.chinasofti.serviceImpl;
 
+import com.chinasofti.entity.Department;
+import com.chinasofti.entity.Post;
 import com.chinasofti.entity.Staff;
 import com.chinasofti.entity.StaffExample;
+import com.chinasofti.mapper.DepartmentMapper;
+import com.chinasofti.mapper.PostMapper;
 import com.chinasofti.mapper.StaffMapper;
 import com.chinasofti.service.StaffService;
 import com.chinasofti.util.PageBean;
+import com.chinasofti.vo.StaffVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +24,12 @@ public class StaffServiceImpl implements StaffService {
 
     @Autowired
     private StaffMapper staffMapper;
+
+    @Autowired
+    private DepartmentMapper departmentMapper;
+
+    @Autowired
+    private PostMapper postMapper;
 
 
     @Override
@@ -70,5 +81,22 @@ public class StaffServiceImpl implements StaffService {
         pageBean.setMsg("");
         pageBean.setCode(0);
         return pageBean;
+    }
+
+    //查询部门表和岗位表
+    @Override
+    public StaffVo search() {
+        List<Post> posts = postMapper.queryAllPost();
+        List<Department> departments = departmentMapper.selectByExample(null);
+        StaffVo staffVo = new StaffVo();
+        staffVo.setDepartmentList(departments);
+        staffVo.setPostList(posts);
+        return staffVo;
+    }
+
+    @Override
+    public List<Staff> selectOneStaff(int staffId) {
+        List<Staff> list = staffMapper.selectOneStaff(staffId);
+        return  list;
     }
 }

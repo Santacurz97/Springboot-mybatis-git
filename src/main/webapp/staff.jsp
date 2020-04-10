@@ -82,7 +82,7 @@
                                 ,{field:'staffNum', title:'身份证号', edit: 'text', sort: true}
                                 ,{field:'departmentName', title:'所属部门', templet:'<div>{{d.department.departmentName}}</div>', edit: 'text', sort: true}
                                 ,{field:'post_name', title:'所属岗位', templet:'<div>{{d.post.post_name}}</div>',edit: 'text', sort: true}
-                                ,{field:'probation', title:'是否适用', templet: '#switchTpl', unresize: true}
+                                ,{field:'probation', title:'是否试用', templet: '#switchTpl', unresize: true}
                                 ,{field:'quit', title:'是否离职', templet: '#switchTpl', unresize: true}
                                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
                             ]]
@@ -141,7 +141,7 @@
                         });
 
                         $('#sub').on('click', function(){
-                            var staffIdValue = $('#value1');
+                            var staffId = $('#value1');
                             var staffValue = $('#value2');
                             //执行重载
                             table.reload('test', {
@@ -149,8 +149,8 @@
                                     curr: 1 //重新从第 1 页开始
                                 }
                                 ,where: {
-                                    staffId: staffIdValue.val(),
-                                    staffName:staffValue.val(),
+                                    staffId: staffId.val(),
+                                    staffValue:staffValue.val(),
                                 }
                                 , url: '${pageContext.request.contextPath}/user/searchStaff'  //后台做模糊搜索接口路径
                                 , method: 'post'

@@ -3,12 +3,14 @@ package com.chinasofti.controller;
 import com.chinasofti.entity.Staff;
 import com.chinasofti.service.StaffService;
 import com.chinasofti.util.PageBean;
+import com.chinasofti.vo.StaffVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -84,20 +86,59 @@ public class UserController {
         return staff;
     }
 
+    //跳转修改页面，给出staffMessage
+    @RequestMapping("toupdateStaff/{staffId}")
+    public String toupdateStaff(@PathVariable(value="staffId") int staffid, Model model){
+        List<Staff> list = staffService.selectOneStaff(staffid);
+        StaffVo staffVo = staffService.search();
+        model.addAttribute("staffVo",staffVo);
+        model.addAttribute("staffMessage",list.get(0));
+        return "updateStaff";
+    }
+
     /**
-     * 添加员工页面
+     * 修改员工
+     * @param
+     * @return
+     */
+    @RequestMapping("updateStaff/{id}")
+    public String updateStaff(Staff staffMessage,@PathVariable(value="id") int id){
+        staffMessage.setStaffId(id);
+        System.out.println(staffMessage);
+        Boolean truth = staffService.updateStaff(staffMessage);
+        //成功
+        if(truth){
+            return "redirect:/user/tostaff";
+        }
+        //失败
+        System.out.printf("修改失败");
+        return "staff";
+    }
+
+    /**
+     * 跳转添加员工页面
      * @return
      */
     @RequestMapping("addstaff")
-    public String addstaff(){
+    public String addstaff(Model model){
+        //查询部门表和岗位表
+        StaffVo staffVo = staffService.search();
+        model.addAttribute("staffVo",staffVo);
         return "addStaff";
     }
 
+    /**
+     * 添加员工
+     * @param staff
+     * @return
+     */
     @RequestMapping("addStaff")
     public String addStaff(Staff staff){
+        staff.setProbation(1);
+        staff.setQuit(0);
         int i = staffService.addStaff(staff);
         if(i == 1){
-            return "staff";
+            return "redirect:/user/tostaff";
         }
         return "user/addstaff";
     }

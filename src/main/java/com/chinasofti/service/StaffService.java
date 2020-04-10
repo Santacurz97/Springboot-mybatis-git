@@ -2,6 +2,9 @@ package com.chinasofti.service;
 
 import com.chinasofti.entity.Staff;
 import com.chinasofti.util.PageBean;
+import com.chinasofti.vo.StaffVo;
+
+import java.util.List;
 
 public interface StaffService {
     //查询所有员工
@@ -18,4 +21,10 @@ public interface StaffService {
 
     //模糊查询
     PageBean<Staff> searchStaff(int staffId, String staffName);
+
+    //查询部门表和岗位表
+    StaffVo search();
+
+
+    List<Staff> selectOneStaff(int staffId);
 }
