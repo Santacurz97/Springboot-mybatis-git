@@ -16,9 +16,9 @@
 <div class="wrapper">
     <div class="container">
         <h1>Welcome</h1>
-        <a href="${pageContext.request.contextPath}/dep/todepartment"><button>部门管理</button><br /></a>
-        <a href="${pageContext.request.contextPath}/post/toPost"><button>岗位管理</button><br /></a>
-        <a href="${pageContext.request.contextPath}/user/tostaff"><button>员工信息中心</button></a>
+        <a href="${pageContext.request.contextPath}/dep/todepartment" target="_blank"><button>部门管理</button><br /></a>
+        <a href="${pageContext.request.contextPath}/post/toPost" target="_blank"><button>岗位管理</button><br /></a>
+        <a href="${pageContext.request.contextPath}/user/tostaff" target="_blank"><button>员工信息中心</button></a>
     </div>
 </div>
 <script>

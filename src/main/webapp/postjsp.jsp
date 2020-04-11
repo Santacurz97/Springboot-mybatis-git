@@ -138,7 +138,6 @@
                         $('#sub').on('click', function(){
                             var postIdValue = $('#value1');
                             var postValue = $('#value2');
-                            alert(postIdValue.val());
                             //执行重载
                             table.reload('test', {
                                 page: {
