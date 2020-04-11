@@ -11,7 +11,7 @@ import com.chinasofti.entity.Staff;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-import java.util.Date;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,7 +80,6 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public int addDepartment(Department department){
         int num = 0;
-        department.setDepartmentAdddate(new Date());
         num = departmentMapper.insertSelective(department);
         return num;
     }

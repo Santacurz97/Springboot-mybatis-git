@@ -5,8 +5,8 @@
   Time: 21:04
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -28,18 +28,18 @@
 <body>
 <div class="wrapper">
     <!-- 数据提交 - form表单 -->
-    <form action="${pageContext.request.contextPath}/user/addDepartment" class="layui-form" method="post" style="margin: auto;width: 300px;">
+    <form action="${pageContext.request.contextPath}/dep/addDepartment" class="layui-form" method="post" style="margin: auto;width: 300px;">
         <div style="color: red;">
             ${requestScope.info}
         </div>
         <div class="layui-form-item">
-            <input type="text" name="departName" lay-verify="title" autocomplete="off" placeholder="请输入部门名称" class="layui-input">
+            <input type="text" name="departmentName" lay-verify="title" autocomplete="off" placeholder="请输入部门名称" class="layui-input">
         </div>
         <div>
-            <select name="Sdepart">
+            <select name="sdepartmentId">
                 <option value="">请输入上级部门名称</option>
                 <c:forEach var="sdepart" items="${SdepartList}">
-                    <option   value="${sdepart.SdepartId}">${sdepart.SdepartmentName}</option>
+                    <option   value="${sdepart.departmentId}">${sdepart.departmentName}</option>
                 </c:forEach>
             </select>
         </div><br /><br />
@@ -53,4 +53,3 @@
     });
 </script>
 </html>
-<!DOCTYPE html>

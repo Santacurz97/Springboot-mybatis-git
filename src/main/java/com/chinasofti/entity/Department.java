@@ -15,6 +15,15 @@ public class Department {
 
     private Date departmentMdate;
 
+    public Department() {
+    }
+
+    public Department(String departmentName, Integer sdepartmentId, Date departmentAdddate) {
+        this.departmentName = departmentName;
+        this.sdepartmentId = sdepartmentId;
+        this.departmentAdddate = departmentAdddate;
+    }
+
     public Integer getDepartmentId() {
         return departmentId;
     }

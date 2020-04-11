@@ -112,7 +112,7 @@
                             var data = obj.data;
                             //console.log(obj)
                             if(obj.event === 'del'){  //删除
-                                layer.confirm('真的删除行么', function(index){
+                                layer.confirm('真的删除改部门吗？', function(index){
                                     obj.del();
                                     $.post("${pageContext.request.contextPath}/dep/delDepartment", {id:data.departmentId})
                                     layer.close(index);

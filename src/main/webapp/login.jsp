@@ -39,11 +39,11 @@
             <div style="color: red; margin: -40px 100px -15px">${requestScope.info}</div>
             <!-- 输入框 -->
             <div class="lgD">
-                <input type="text" id ="code" name="name" placeholder="输入用户名"/>
+                <input type="text" id ="code" name="name" placeholder="输入用户名" value="yqy"/>
                 <span id="codeInfo"></span>
             </div>
             <div class="lgD">
-                <input type="password" id="password" name="password" placeholder="输入用户密码"/>
+                <input type="password" id="password" name="password" placeholder="输入用户密码" value="123456"/>
                 <span id="paswInfo"></span>
             </div>
             <div class="logC">
